@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import HomeScreen from "./Screens/HomeScreen";
 import ProductScreen from "./Screens/ProductScreen";
 
@@ -40,18 +40,20 @@ function App() {
           </button>
           <ul>
             <li>
-              <a href="index.html">Pants</a>
+              <Link to="index.html">Pants</Link>
             </li>
 
             <li>
-              <a href="index.html">Shirts</a>
+              <Link to="index.html">Shirts</Link>
             </li>
           </ul>
         </aside>
         <main className="main">
           <div className="content">
-            <Route path="/product/:id" component={ProductScreen} />
-            <Route path="/" exact={true} component={HomeScreen} />
+            <Switch>
+              <Route path="/product/:id" component={ProductScreen} />
+              <Route path="/" exact={true} component={HomeScreen} />
+            </Switch>
           </div>
         </main>
         <footer className="footer">All right reserved.</footer>
