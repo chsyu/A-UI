@@ -11,7 +11,7 @@ const Aside = () => {
       <h3 className="sidebar-header">Shopping Categories</h3>
       <button
         className="sidebar-close-button hideLarge"
-        onClick={() => dispatch({type: "closeAside"})}
+        onClick={() => dispatch({type: "CLOSEASIDE"})}
       >
         x
       </button>

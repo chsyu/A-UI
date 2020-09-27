@@ -8,7 +8,7 @@ const Header = () => {
     return (
       <header className="header">
         <div className="brand">
-          <button className="hideLarge" onClick={() => dispatch({type: "openAside"})}>
+          <button className="hideLarge" onClick={() => dispatch({type: "OPENASIDE"})}>
             &#9776;
           </button>
           <Link to="/">amazona</Link>
