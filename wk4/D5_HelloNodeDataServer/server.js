@@ -7,4 +7,10 @@ app.get("/api/products", (req, res) => {
   res.send(data);
 });
 
-app.listen(5000, () => { console.log("Server started at http://localhost:5000") });
+app.get("/api/:id", (req, res) => {
+  res.send(`<h1>Person:${req.params.id}</h1><h2>name: ${req.query.name}</h2>`);
+});
+
+app.listen(5000, () => { 
+  console.log("Server started at http://localhost:5000") 
+});
