@@ -8,7 +8,7 @@ import './App.css';
 
 
 function App() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState<boolean>(false);
   const onSetAsideOpen = (openState: boolean) => {
     setOpen(openState);
   }

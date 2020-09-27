@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Aside = ({ open, onSetAsideOpen }:{open:boolean;onSetAsideOpen:(arg0:boolean)=>void}) => {
+const Aside = ({open, onSetAsideOpen}) => {
    return (
      <aside className={`${open ? "sidebar open" : "sidebar"}`}>
        <h3 className="sidebar-header">Shopping Categories</h3>
