@@ -1,19 +1,10 @@
-import React, { useReducer, useEffect } from 'react';
-import axios from "axios";
+import React, { useContext } from 'react';
 
 import Product from "../components/Product";
-import { initialAppState, appReducer } from "../reducers/appReducer"
+import { StateContext } from "../contexts"
 
 const HomeScreen = () => {
-  const [state, dispatch] = useReducer(appReducer, initialAppState)
-
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios.get("/api/products");
-      dispatch({ type: "SETJSONDATA", payload: data });
-    }
-    fetchData();
-  }, []);
+  const state = useContext(StateContext);
 
   return (
     <ul className="products">
