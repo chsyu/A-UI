@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Axios from "axios";
 import Cookie from "js-cookie"
 
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_INIT_ITEMS } from "../constants/appConstants";
+import actionType from "../constants";
 import { StateContext, DispatchContext } from "../contexts";
 
 function CartScreen(props) {
@@ -17,7 +17,7 @@ function CartScreen(props) {
   const addToCart = async (productId, qty) => {
     const { data } = await Axios.get("/api/products/" + productId);
     dispatch({
-      type: CART_ADD_ITEM,
+      type: actionType.CART_ADD_ITEM,
       payload: {
         product: data._id,
         name: data.name,
@@ -30,11 +30,11 @@ function CartScreen(props) {
   };
 
   const removeFromCart = (productId) => {
-    dispatch({ type: CART_REMOVE_ITEM, payload: productId });
+    dispatch({ type: actionType.CART_REMOVE_ITEM, payload: productId });
   };
 
   useEffect(() => {
-    dispatch({ type: CART_INIT_ITEMS, payload: Cookie.getJSON("cartItems") });     
+    dispatch({ type: actionType.CART_INIT_ITEMS, payload: Cookie.getJSON("cartItems") });     
     if (productId) {
       addToCart(productId, qty);
     }

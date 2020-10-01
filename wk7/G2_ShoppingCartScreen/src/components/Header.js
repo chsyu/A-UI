@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { DispatchContext } from "../contexts";
-import { OPEN_ASIDE } from "../constants/appConstants"
+import actionType from "../constants"
 
 const Header = () => {
     const dispatch = useContext(DispatchContext);
@@ -9,13 +9,13 @@ const Header = () => {
     return (
       <header className="header">
         <div className="brand">
-          <button className="hideLarge" onClick={() => dispatch({type: OPEN_ASIDE})}>
+          <button className="hideLarge" onClick={() => dispatch({type: actionType.OPEN_ASIDE})}>
             &#9776;
           </button>
           <Link to="/">amazona</Link>
         </div>
         <div className="header-links">
-          <a href="cart.html">Cart</a>
+          <Link to="/cart">Cart</Link>
           <a href="signin.html">Sign In</a>
         </div>
       </header>

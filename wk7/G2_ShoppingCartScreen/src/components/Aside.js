@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { StateContext, DispatchContext } from "../contexts";
-import { CLOSE_ASIDE } from "../constants/appConstants"
+import actionType from "../constants"
 
 const Aside = () => {
   const dispatch = useContext(DispatchContext);
@@ -12,7 +12,7 @@ const Aside = () => {
       <h3 className="sidebar-header">Shopping Categories</h3>
       <button
         className="sidebar-close-button hideLarge"
-        onClick={() => dispatch({type: CLOSE_ASIDE})}
+        onClick={() => dispatch({type: actionType.CLOSE_ASIDE})}
       >
         x
       </button>
