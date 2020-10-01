@@ -6,8 +6,7 @@
       "price": 60,
       "brand": " Nike",
       "rating": 4.5,
-      "numReviews": 10,
-      "countInStock": 6
+      "numReviews": 10
    },
    {
       "_id": "2",
@@ -17,8 +16,7 @@
       "price": 50,
       "brand": " Nike",
       "rating": 4.2,
-      "numReviews": 5,
-      "countInStock": 5
+      "numReviews": 5
    },
    {
       "_id": "3",
@@ -28,17 +26,15 @@
       "price": 70,
       "brand": " Nike",
       "rating": 4.5,
-      "numReviews": 8,
-      "countInStock": 6
+      "numReviews": 8
    }, {
       "_id": "4",
-      "name": "Color Pants",
+      "name": "Best Pants",
       "category": "Pants",
       "image": "/images/d1.jpg",
       "price": 70,
       "brand": " Nike",
       "rating": 4.5,
-      "numReviews": 8,
-      "countInStock": 6
+      "numReviews": 8
    }
 ]
