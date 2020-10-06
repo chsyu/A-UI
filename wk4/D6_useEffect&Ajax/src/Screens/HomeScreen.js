@@ -3,6 +3,7 @@ import axios from "axios";
 
 import Product from "../components/Product";
 import { initialAppState, appReducer } from "../reducers/appReducer"
+import { SET_JSON_DATA } from "../constants/appConstants"
 
 const HomeScreen = () => {
   const [state, dispatch] = useReducer(appReducer, initialAppState)
@@ -10,7 +11,7 @@ const HomeScreen = () => {
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios.get("/api/products");
-      dispatch({ type: "SETJSONDATA", payload: data });
+      dispatch({ type: SET_JSON_DATA, payload: data });
     }
     fetchData();
   }, []);
