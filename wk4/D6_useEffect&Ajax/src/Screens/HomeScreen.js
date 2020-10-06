@@ -1,5 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
-import axios from "axios";
+import React, { useContext } from 'react';
 
 import Product from "../components/Product";
 import { initialAppState, appReducer } from "../reducers/appReducer"

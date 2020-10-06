@@ -1,0 +1,11 @@
+const actionType = {
+   OPEN_ASIDE : "OPEN_ASIDE",
+   CLOSE_ASIDE : "CLOSE_ASIDE",
+   SET_PRODUCTS_DATA : "SET_PRODUCTS_DATA",
+   SET_PRODUCT_DATA : "SET_PRODUCT_DATA",
+
+   CART_ADD_ITEM : "CART_ADD_ITEM",
+   CART_REMOVE_ITEM : "CART_REMOVE_ITEM",
+};
+export default actionType;
+

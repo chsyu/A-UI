@@ -8,7 +8,7 @@ import Aside from "./components/Aside";
 import Main from "./components/Main";
 import './App.css';
 
-import { SET_JSON_DATA } from "./constants/appConstants";
+import actionType from "./constants";
 import { StateContext, DispatchContext } from "./contexts"
 import { initialAppState, appReducer } from "./reducers/appReducer"
 
@@ -17,8 +17,8 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await axios.get("/api/products");
-      dispatch({ type: SET_JSON_DATA, payload: data });
+      const { data } = await axios.get("http://127.0.0.1:5000/api/products");
+      dispatch({ type: actionType.SET_PRODUCTS_DATA, payload: data });
     }
     fetchData();
   }, []);
