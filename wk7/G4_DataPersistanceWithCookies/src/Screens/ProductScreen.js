@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Rating from "../components/Rating";
 
 import { StateContext, DispatchContext } from "../contexts"
 import actionType from "../constants"
@@ -22,6 +23,8 @@ function ProductScreen(props) {
   };
 
   useEffect(() => {
+    console.log('prodictId=')
+    console.log(productId)
     const fetchProduct = async () => {
       const { data } = await axios.get(`/api/products/${productId}`);
       dispatch({ type: actionType.SET_PRODUCT_DATA, payload: data });
@@ -44,7 +47,10 @@ function ProductScreen(props) {
               <h4>{product.name}</h4>
             </li>
             <li>
-              {product.rating} Stars ({product.numReviews} Reviews)
+              <Rating
+                rating={product.rating}
+                numReviews={product.numReviews}
+              ></Rating>
             </li>
             <li>
               Price: <b>${product.price}</b>
