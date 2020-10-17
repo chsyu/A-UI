@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import * as QueryString from "query-string";
 import { StateContext, DispatchContext } from "../contexts"
 import actionType from "../constants";
 
@@ -10,7 +11,7 @@ function SigninScreen(props) {
   const { userSignin } = useContext(StateContext);
   const { loading, userInfo, error } = userSignin;
   const dispatch = useContext(DispatchContext);
-  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
+  const { redirect } = QueryString.parse(props.location.search);
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);

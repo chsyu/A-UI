@@ -10,11 +10,6 @@ import { StateContext, DispatchContext } from "../contexts"
 import actionType from "../constants"
 
 function ProductScreen(props) {
-
-  // const product = products.find(
-  //   (x) => x._id === match.params.id
-  // );
-
   const [qty, setQty] = useState(1);
 
   const { product } = useContext(StateContext);

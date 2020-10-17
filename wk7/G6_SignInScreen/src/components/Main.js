@@ -12,7 +12,7 @@ const Main = () => {
        <div className="content">
          <Switch>
            <Route path="/product/:id" component={ProductScreen} />
-           <Route path="/cart/:id?" component={CartScreen} />
+           <Route path="/cart/:id" component={CartScreen} />
            <Route path="/signin" component={SigninScreen} />
            <Route path="/register" component={RegisterScreen} />
            <Route path="/" exact={true} component={HomeScreen} />

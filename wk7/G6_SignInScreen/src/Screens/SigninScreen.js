@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import * as QueryString from "query-string";
+
 import { StateContext, DispatchContext } from "../contexts"
 
 function SigninScreen(props) {
@@ -9,20 +11,10 @@ function SigninScreen(props) {
   const { userSignin } = useContext(StateContext);
   const { loading, userInfo, error } = userSignin;
   const dispatch = useContext(DispatchContext);
-  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     props.history.push(redirect);
-  //   }
-  //   return () => {
-  //     //
-  //   };
-  // }, [userInfo]);
+  const { redirect } = QueryString.parse(props.location.search);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch(signin(email, password));
-
   }
   return <div className="form">
     <form onSubmit={submitHandler} >

@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import * as QueryString from "query-string";
 
 import actionType from "../constants";
 import { StateContext, DispatchContext } from "../contexts";
@@ -9,9 +10,7 @@ function CartScreen(props) {
   const { cartItems } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const productId = props.match.params.id;
-  const qty = props.location.search
-    ? Number(props.location.search.split("=")[1])
-    : 1;
+  const { qty } = QueryString.parse(props.location.search);
 
   const addToCart = async (productId, qty) => {
     const { data } = await Axios.get("/api/products/" + productId);
