@@ -17,16 +17,12 @@ const initialAppState = {
   cartItems: [],
   userSignin: {
     loading: false,
-    userInfo: {
-      name: "ntuedtd",
-    },
+    userInfo: null,
     error: "",
   },
   userRegister: {
     loading: false,
-    userInfo: {
-      name: "ntuedtd",
-    },
+    userInfo: null,
     error: "",
   },
 };
@@ -36,12 +32,12 @@ let cartItems = {};
 const appReducer = (state, action) => {
   switch (action.type) {
     case actionType.OPEN_ASIDE:
-      return { ...state, aside: {...state.aside, open: true}};
+      return { ...state, aside: { ...state.aside, open: true } };
     case actionType.CLOSE_ASIDE:
       return { ...state, aside: { ...state.aside, open: false } };
 
     case actionType.PRODUCT_LIST_REQUEST:
-      return { ...state, products: { ...state.products, loading: true}};
+      return { ...state, products: { ...state.products, loading: true } };
     case actionType.PRODUCT_LIST_SUCCESS:
       return {
         ...state,
@@ -84,6 +80,14 @@ const appReducer = (state, action) => {
       cartItems = state.cartItems.filter((x) => x.product !== action.payload);
       return { ...state, cartItems };
 
+    case actionType.USER_INIT_INFO:
+      return {
+        ...state,
+        userSignin: {
+          ...state.userSignin,
+          userInfo: action.payload,
+        },
+      };
     case actionType.USER_SIGNIN_REQUEST:
       return { ...state, userSignin: { ...state.userSignin, loading: true } };
     case actionType.USER_SIGNIN_SUCCESS:
@@ -104,14 +108,43 @@ const appReducer = (state, action) => {
           error: action.payload,
         },
       };
+    case actionType.USER_LOGOUT:
+      return {
+        ...state,
+        userSignin: {
+          ...state.userSignin,
+          userInfo: null,
+        },
+      };
 
     case actionType.USER_REGISTER_REQUEST:
-      return { loading: true };
-    case actionType.USER_REGISTER_SUCCESS:
-      return { loading: false, userInfo: action.payload };
-    case actionType.USER_REGISTER_FAIL:
-      return { loading: false, error: action.payload };
+      return {
+        ...state,
+        userRegister: { ...state.userRegister, loading: true },
+      };
 
+    case actionType.USER_REGISTER_SUCCESS:
+      return {
+        ...state,
+        userSignin: {
+          ...state.userSignin,
+          userInfo: action.payload,
+        },
+        userRegister: {
+          ...state.userRegister,
+          loading: false,
+          userInfo: action.payload,
+        },
+      };
+    case actionType.USER_REGISTER_FAIL:
+      return {
+        ...state,
+        userRegister: {
+          ...state.userRegister,
+          loading: false,
+          error: action.payload,
+        },
+      };
     default:
       return state;
   }

@@ -118,12 +118,33 @@ const appReducer = (state, action) => {
       };
 
     case actionType.USER_REGISTER_REQUEST:
-      return { loading: true };
-    case actionType.USER_REGISTER_SUCCESS:
-      return { loading: false, userInfo: action.payload };
-    case actionType.USER_REGISTER_FAIL:
-      return { loading: false, error: action.payload };
+      return {
+        ...state,
+        userRegister: { ...state.userRegister, loading: true },
+      };
 
+    case actionType.USER_REGISTER_SUCCESS:
+      return {
+        ...state,
+        userSignin: {
+          ...state.userSignin,
+          userInfo: action.payload,
+        },
+        userRegister: {
+          ...state.userRegister,
+          loading: false,
+          userInfo: action.payload,
+        },
+      };
+    case actionType.USER_REGISTER_FAIL:
+      return {
+        ...state,
+        userRegister: {
+          ...state.userRegister,
+          loading: false,
+          error: action.payload,
+        },
+      };
     default:
       return state;
   }
