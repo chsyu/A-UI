@@ -5,7 +5,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import Product from "../components/Product";
 import { StateContext, DispatchContext } from "../contexts"
-import actionType from "../constants";
+import actionType, { SERVER_URL } from "../constants";
 
 const HomeScreen = () => {
   const { products } = useContext(StateContext);
@@ -16,7 +16,7 @@ const HomeScreen = () => {
     async function fetchData() {
       try {
         dispatch({ type: actionType.PRODUCT_LIST_REQUEST });
-        const { data } = await axios.get("/api/products");
+        const { data } = await axios.get(SERVER_URL + "/api/products");
         dispatch({ type: actionType.PRODUCT_LIST_SUCCESS, payload: data });
       } catch (error) {
         dispatch({

@@ -8,4 +8,5 @@ const actionType = {
    CART_REMOVE_ITEM : "CART_REMOVE_ITEM",
 };
 export default actionType;
+export const SERVER_URL = "http://127.0.0.1:5000";
 

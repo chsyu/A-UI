@@ -8,7 +8,7 @@ import Aside from "./components/Aside";
 import Main from "./components/Main";
 import './App.css';
 
-import actionType from "./constants";
+import actionType, { SERVER_URL } from "./constants";
 import { StateContext, DispatchContext } from "./contexts"
 import { initialAppState, appReducer } from "./reducers/appReducer"
 
@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await axios.get("/api/products");
+      const { data } = await axios.get(SERVER_URL + "/api/products");
       dispatch({ type: actionType.SET_PRODUCTS_DATA, payload: data });
     }
     fetchData();

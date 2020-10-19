@@ -7,7 +7,7 @@ import MessageBox from "../components/MessageBox";
 import Rating from "../components/Rating";
 
 import { StateContext, DispatchContext } from "../contexts"
-import actionType from "../constants"
+import actionType, { SERVER_URL } from "../constants";
 
 function ProductScreen(props) {
 
@@ -29,7 +29,9 @@ function ProductScreen(props) {
     const fetchProduct = async () => {
       try {
         dispatch({ type: actionType.PRODUCT_DETAILS_REQUEST });
-        const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(
+          `${SERVER_URL}/api/products/${productId}`
+        );
         dispatch({ type: actionType.PRODUCT_DETAILS_SUCCESS, payload: data });
       }catch(error){
         dispatch({ type: actionType.PRODUCT_DETAILS_FAIL, payload: error.message});

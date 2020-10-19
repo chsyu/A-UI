@@ -2,11 +2,10 @@ import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import { StateContext, DispatchContext } from "../contexts"
-import actionType from "../constants"
+import { StateContext, DispatchContext } from "../contexts";
+import actionType, { SERVER_URL } from "../constants";
 
 function ProductScreen(props) {
-
   // const product = products.find(
   //   (x) => x._id === match.params.id
   // );
@@ -23,7 +22,9 @@ function ProductScreen(props) {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${productId}`);
+      const { data } = await axios.get(
+        `${SERVER_URL}/api/products/${productId}`
+      );
       dispatch({ type: actionType.SET_PRODUCT_DATA, payload: data });
     };
     fetchProduct();

@@ -9,4 +9,5 @@ const actionType = {
    CART_INIT_ITEMS : "CART_INIT_ITEMS",
 };
 export default actionType;
+export const SERVER_URL = "http://127.0.0.1:5000";
 

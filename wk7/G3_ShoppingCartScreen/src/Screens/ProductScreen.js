@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { StateContext, DispatchContext } from "../contexts"
-import actionType from "../constants"
+import actionType, { SERVER_URL } from "../constants";
 
 function ProductScreen(props) {
 
@@ -23,7 +23,9 @@ function ProductScreen(props) {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(
+          `${SERVER_URL}/api/products/${productId}`
+        );
       dispatch({ type: actionType.SET_PRODUCT_DATA, payload: data });
     };
     fetchProduct();

@@ -30,5 +30,7 @@ const actionType = {
   USER_REGISTER_SUCCESS: "USER_REGISTER_SUCCESS",
   USER_REGISTER_FAIL: "USER_REGISTER_FAIL",
 };
+
+export const SERVER_URL = "http://127.0.0.1:5000";
 export default actionType;
 

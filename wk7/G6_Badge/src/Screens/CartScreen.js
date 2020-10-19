@@ -4,7 +4,7 @@ import Axios from "axios";
 import Cookie from "js-cookie"
 import * as QueryString from "query-string";
 
-import actionType from "../constants";
+import actionType, { SERVER_URL } from "../constants";
 import { StateContext, DispatchContext } from "../contexts";
 
 function CartScreen(props) {
@@ -14,7 +14,7 @@ function CartScreen(props) {
   const { qty } = QueryString.parse(props.location.search);
 
   const addToCart = async (productId, qty) => {
-    const { data } = await Axios.get("/api/products/" + productId);
+    const { data } = await Axios.get(SERVER_URL + "/api/products/" + productId);
     dispatch({
       type: actionType.CART_ADD_ITEM,
       payload: {

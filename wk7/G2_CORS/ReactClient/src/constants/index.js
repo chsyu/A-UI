@@ -7,4 +7,5 @@ const actionType = {
    SET_PRODUCT_DATA : "SET_PRODUCT_DATA",
 };
 export default actionType;
+export const SERVER_URL = "http://127.0.0.1:5000";
 
