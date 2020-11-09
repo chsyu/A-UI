@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import Cookie from "js-cookie";
 
 import { DispatchContext } from "../contexts";
 import actionType from "../constants";
@@ -11,8 +10,8 @@ function ProfileScreen(props) {
   const dispatch = useContext(DispatchContext);
 
   const handleLogout = () => {
-    Cookie.remove("userInfo");
-    Cookie.remove("cartItems");
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("cartItems");
     dispatch({ type: actionType.USER_LOGOUT });
     props.history.push("/signin");
   }
