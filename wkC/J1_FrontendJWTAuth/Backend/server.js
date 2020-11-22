@@ -5,7 +5,7 @@ const productRouter = require("./routers/productRouter");
 const userRouter = require("./routers/userRouter");
 require("dotenv").config();
 
-mongoose.connect(process.env.MONGODB_LOCAL_URL, {
+mongoose.connect(process.env.MONGODB_ATLAS_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
